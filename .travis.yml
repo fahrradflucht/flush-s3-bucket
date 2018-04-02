@@ -8,13 +8,23 @@ services:
   - docker
 
 env:
-  # Default scality/s3server credentials
-  - AWS_ACCESS_KEY_ID=accessKey1 AWS_SECRET_ACCESS_KEY=verySecretKey1
+  global:
+    # GH_TOKEN (Github Access Token for greenkeeper-lockfile)
+    - secure: sg7B2BchVQgC0Zk7Q4LCUR0uHWcak9nVo8Yc6W7w7s4w0+IUThMcRdKakzRHmPp4BjWej5AuI6jlaJKSh+P5IkdiF6nyp7GLfNfa+9Zxz1eQX+XYVYjdB7NTrluCwjzmr2GQVruouvpS+lQNALa/EUZ5RVk2tQyJ3HDw0gRo6gEPphz1MwGm08B+Oy62u93FbPA3Lw/aCvusi6aK+fq5SN8pRBF0vVsbrmhHYMxXQAgbLGNguo3KBBnjF9k1PtY3993b0RYTHXVFas7fxS4dWDiGy5e0Y42k42lN0sgOMM28bgNM2P+Gl/+kNghVBq3F+P9JVHT7eIfQUiI+AazCeQ1d8XaJzaPe1S16m4rE86mynSP0GTMiOvFzCPFfaOSMbV76GIpQ9GoWmVkpnIxFbdXaFglnhlzDIO6LEPvqd+x4tHDfikW/9ogFbDThowc/OD39T0pugyDgYSB3EU7RWdjZM2fIz1JGYuUVdqybn/3TO9qIaUaCMbR/bKejPbVx/Gvxc5xvVVktFJ+fEVVhBnXFBYA16/Vlb0y4xkgd1D6J4YfV7bvv8yjhvjtpTL0P/2uxOXWgh7JPhzbfT504UXUnjqkxpuTukhxv7CQqm5chCViRADyfi5Z2pP02zZ7cI4XdMwEJ/ELKy1hirximuZmZw13JsZtZZuG2ueMDbLI=
+    # Default scality/s3server credentials
+    - AWS_ACCESS_KEY_ID=accessKey1 AWS_SECRET_ACCESS_KEY=verySecretKey1
 
 before_install:
   - docker run -d --name s3server -p 8000:8000 scality/s3server:mem-latest
+  - yarn global add greenkeeper-lockfile@1
+
+before_script:
+  - greenkeeper-lockfile-update
 
 script:
   - yarn format:verify
   - yarn lint
   - yarn test
+
+after_script:
+  - greenkeeper-lockfile-upload
