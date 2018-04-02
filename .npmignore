@@ -1,0 +1,9 @@
+src
+
+lib/**/*.test.(d.ts|js|js.map)
+
+jest.config.js
+tsconfig.json
+tslint.json
+
+*.log
