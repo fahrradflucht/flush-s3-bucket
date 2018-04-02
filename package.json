@@ -1,6 +1,6 @@
 {
   "name": "flush-s3-bucket",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Delete all files in a S3 bucket.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
