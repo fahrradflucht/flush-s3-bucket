@@ -13,3 +13,8 @@ env:
 
 before_install:
   - docker run -d --name s3server -p 8000:8000 scality/s3server:mem-latest
+
+script:
+  - yarn format:verify
+  - yarn lint
+  - yarn test
