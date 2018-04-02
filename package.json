@@ -19,6 +19,7 @@
     "format": "prettier --write '**/*.{js,json,md,ts}'",
     "format:verify": "prettier --list-different '**/*.{js,json,md,ts}'",
     "lint": "tslint --project .",
+    "prepublish": "npm run build",
     "test": "jest"
   },
   "devDependencies": {
