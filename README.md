@@ -1,4 +1,4 @@
-# pour-out-s3-bucket
+# flush-s3-bucket
 
 > Delete all files in a S3 bucket.
 

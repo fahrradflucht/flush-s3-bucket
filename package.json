@@ -1,5 +1,5 @@
 {
-  "name": "pour-out-s3-bucket",
+  "name": "flush-s3-bucket",
   "version": "0.1.0",
   "description": "Delete all files in a S3 bucket.",
   "main": "lib/index.js",
@@ -8,7 +8,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fahrradflucht/pour-out-s3-bucket.git"
+    "url": "https://github.com/fahrradflucht/flush-s3-bucket.git"
   },
   "scripts": {
     "build": "tsc",

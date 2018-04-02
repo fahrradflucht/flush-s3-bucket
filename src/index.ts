@@ -30,7 +30,7 @@ function toObjectIdentifierList(
  * @param callback Callback called when the operation is completed or when the
  * first error occured.
  */
-export function pourOutS3Bucket(
+export function flushS3Bucket(
   client: S3,
   bucketName: string,
   callback: (error?: AWSError | Error) => void

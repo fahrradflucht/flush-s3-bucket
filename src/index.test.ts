@@ -1,7 +1,7 @@
 import { series, timesLimit } from 'async';
 import { S3 } from 'aws-sdk';
 import { randomBytes } from 'crypto';
-import { pourOutS3Bucket } from '.';
+import { flushS3Bucket } from '.';
 
 const clientConfiguration = {
   endpoint: process.env['S3_ENDPOINT'] || 'http://localhost:8000',
@@ -11,7 +11,7 @@ const clientConfiguration = {
 const createBucketName = (extension: string) =>
   `awesome-test-bucket-${extension}`;
 
-describe('pourOutS3Bucket', () => {
+describe('flushS3Bucket', () => {
   let s3: S3;
   let bucketName: string;
 
@@ -30,7 +30,7 @@ describe('pourOutS3Bucket', () => {
 
   describe('on an empty bucket', () => {
     it('calls the callback without an error', done => {
-      pourOutS3Bucket(s3, bucketName, error => {
+      flushS3Bucket(s3, bucketName, error => {
         expect(error).toBeFalsy();
         done();
       });
@@ -38,7 +38,7 @@ describe('pourOutS3Bucket', () => {
 
     it('does not call the callback immediatly', done => {
       let test = false;
-      pourOutS3Bucket(s3, bucketName, error => {
+      flushS3Bucket(s3, bucketName, error => {
         expect(test).toBe(true);
         done();
       });
@@ -52,14 +52,14 @@ describe('pourOutS3Bucket', () => {
     });
 
     it('calls the callback without an error', done => {
-      pourOutS3Bucket(s3, bucketName, error => {
+      flushS3Bucket(s3, bucketName, error => {
         expect(error).toBeFalsy();
         done();
       });
     });
 
     it('removes the item', done => {
-      pourOutS3Bucket(s3, bucketName, error => {
+      flushS3Bucket(s3, bucketName, error => {
         s3.getObject({ Bucket: bucketName, Key: 'test' }, (err, data) => {
           expect(data).toBe(null);
           done();
@@ -95,14 +95,14 @@ describe('pourOutS3Bucket', () => {
     });
 
     it('calls the callback without an error', done => {
-      pourOutS3Bucket(s3, bucketName, error => {
+      flushS3Bucket(s3, bucketName, error => {
         expect(error).toBeFalsy();
         done();
       });
     });
 
     it('does not leave any objects', done => {
-      pourOutS3Bucket(s3, bucketName, error => {
+      flushS3Bucket(s3, bucketName, error => {
         s3.listObjects({ Bucket: bucketName }, (err, data) => {
           expect(data.Contents).toEqual([]);
           done();
@@ -111,7 +111,7 @@ describe('pourOutS3Bucket', () => {
     });
 
     it('does not leave any versions', done => {
-      pourOutS3Bucket(s3, bucketName, error => {
+      flushS3Bucket(s3, bucketName, error => {
         s3.listObjectVersions({ Bucket: bucketName }, (err, data) => {
           expect(data.Versions).toEqual([]);
           done();
@@ -120,7 +120,7 @@ describe('pourOutS3Bucket', () => {
     });
 
     it('does not leave any delete markers', done => {
-      pourOutS3Bucket(s3, bucketName, error => {
+      flushS3Bucket(s3, bucketName, error => {
         s3.listObjectVersions({ Bucket: bucketName }, (err, data) => {
           expect(data.DeleteMarkers).toEqual([]);
           done();
@@ -175,7 +175,7 @@ describe('pourOutS3Bucket', () => {
      * Do all assertations in one block since the setup takes so long.
      */
     it('works', done => {
-      pourOutS3Bucket(s3, bucketName, error => {
+      flushS3Bucket(s3, bucketName, error => {
         expect(error).toBeFalsy();
         series(
           [
