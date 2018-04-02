@@ -2,6 +2,9 @@ src
 
 lib/**/*.test.(d.ts|js|js.map)
 
+.prettierignore
+.prettierrc
+.travis.yml
 jest.config.js
 tsconfig.json
 tslint.json
