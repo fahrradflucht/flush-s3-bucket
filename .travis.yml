@@ -22,6 +22,7 @@ before_script:
   - greenkeeper-lockfile-update
 
 script:
+  - yarn run build
   - yarn run format:verify
   - yarn run lint
   - yarn test
