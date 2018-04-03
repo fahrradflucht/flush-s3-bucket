@@ -40,3 +40,6 @@ script:
 
 after_script:
   - greenkeeper-lockfile-upload
+
+after_success:
+  - yarn exec semantic-release
