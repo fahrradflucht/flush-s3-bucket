@@ -1,6 +1,6 @@
 {
   "name": "flush-s3-bucket",
-  "version": "1.0.2",
+  "version": "0.0.0-development",
   "description": "Delete all files in a S3 bucket.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -16,7 +16,6 @@
     "format": "prettier --write '**/*.{js,json,md,ts}'",
     "format:verify": "prettier --list-different '**/*.{js,json,md,ts}'",
     "lint": "tslint --project .",
-    "prepublish": "npm run build",
     "test": "jest"
   },
   "devDependencies": {
@@ -25,6 +24,7 @@
     "@types/node": "^9.6.1",
     "jest": "^22.4.3",
     "prettier": "^1.11.1",
+    "semantic-release": "^15.1.4",
     "ts-config": "^18.0.0",
     "ts-jest": "^22.4.2",
     "tslint": "^5.9.1",
