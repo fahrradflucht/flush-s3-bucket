@@ -21,6 +21,10 @@ env:
     # Default scality/s3server credentials
     - AWS_ACCESS_KEY_ID=accessKey1 AWS_SECRET_ACCESS_KEY=verySecretKey1
 
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
+
 before_install:
   - docker run -d --name s3server -p 8000:8000 scality/s3server:mem-latest
   - yarn global add greenkeeper-lockfile@1
