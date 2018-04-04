@@ -4,6 +4,7 @@ lib/**/*.test.(d.ts|js|js.map)
 
 .prettierignore
 .prettierrc
+.releaserc
 .travis.yml
 jest.config.js
 tsconfig.json
