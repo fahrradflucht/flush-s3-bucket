@@ -1,7 +1,7 @@
 {
   "name": "flush-s3-bucket",
   "version": "0.0.0-development",
-  "description": "Delete all files in a S3 bucket.",
+  "description": "Delete all files in an S3 bucket.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "author": "Mathis Wiehl (@fahrradflucht) <mail@mathiswiehl.de>",
