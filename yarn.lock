@@ -100,9 +100,9 @@
   version "2.0.48"
   resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.48.tgz#97436de4c84163b04f678066b3f77b01e58deb7a"
 
-"@types/jest@^22.2.2":
-  version "22.2.2"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-22.2.2.tgz#afe5dacbd00d65325f52da0ed3e76e259629ac9d"
+"@types/jest@^23.0.0":
+  version "23.1.0"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.1.0.tgz#8054dd838ba23dc331794d26456b86c7e50bf0f6"
 
 "@types/node@^10.0.3":
   version "10.0.8"
