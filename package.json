@@ -10,7 +10,10 @@
     "type": "git",
     "url": "https://github.com/fahrradflucht/flush-s3-bucket.git"
   },
-  "keywords": ["empty", "aws"],
+  "keywords": [
+    "empty",
+    "aws"
+  ],
   "scripts": {
     "build": "tsc",
     "format": "prettier --write '**/*.{js,json,md,ts}'",
