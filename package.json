@@ -18,13 +18,18 @@
     "build": "tsc",
     "format": "prettier --write '**/*.{js,json,md,ts}'",
     "format:verify": "prettier --list-different '**/*.{js,json,md,ts}'",
+    "commitmsg": "commitlint -E GIT_PARAMS",
     "lint": "tslint --project .",
     "test": "jest"
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "7.0.1",
+    "@commitlint/travis-cli": "7.0.0",
     "@types/async": "2.0.49",
     "@types/jest": "23.3.1",
     "@types/node": "10.5.4",
+    "commitlint": "7.0.0",
+    "husky": "0.14.3",
     "jest": "23.4.2",
     "prettier": "1.13.7",
     "semantic-release": "15.8.1",
