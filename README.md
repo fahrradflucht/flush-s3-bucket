@@ -1,7 +1,5 @@
 # flush-s3-bucket
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/fahrradflucht/flush-s3-bucket.svg)](https://greenkeeper.io/)
-
 > Delete all files in an S3 bucket.
 
 ## Table of Contents

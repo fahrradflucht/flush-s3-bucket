@@ -15,8 +15,6 @@ services:
 
 env:
   global:
-    # Amend greenkeeper lockfile update commits to the version bump
-    - GK_LOCK_COMMIT_AMEND=true
     # Default scality/s3server credentials
     - AWS_ACCESS_KEY_ID=accessKey1 AWS_SECRET_ACCESS_KEY=verySecretKey1
 
@@ -26,22 +24,15 @@ branches:
 
 before_install:
   - docker run -d --name s3server -p 8000:8000 scality/s3server:mem-latest
-  - yarn global add greenkeeper-lockfile@1
 
 install:
   - yarn
-
-before_script:
-  - greenkeeper-lockfile-update
 
 script:
   - yarn run build
   - yarn run format:verify
   - yarn run lint
   - yarn test
-
-after_script:
-  - greenkeeper-lockfile-upload
 
 after_success:
   - yarn exec semantic-release
