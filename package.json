@@ -28,7 +28,7 @@
     "jest": "22.4.4",
     "prettier": "1.13.5",
     "semantic-release": "15.5.2",
-    "ts-config": "18.0.0",
+    "ts-config": "20.0.1",
     "ts-jest": "22.4.6",
     "tslint": "5.10.0",
     "typescript": "2.8.4"
