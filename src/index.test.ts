@@ -4,7 +4,7 @@ import { randomBytes } from 'crypto';
 import { flushS3Bucket } from '.';
 
 const clientConfiguration = {
-  endpoint: process.env['S3_ENDPOINT'] || 'http://localhost:8000',
+  endpoint: process.env.S3_ENDPOINT || 'http://localhost:8000',
   s3ForcePathStyle: true
 };
 
@@ -38,7 +38,7 @@ describe('flushS3Bucket', () => {
 
     it('does not call the callback immediatly', done => {
       let test = false;
-      flushS3Bucket(s3, bucketName, error => {
+      flushS3Bucket(s3, bucketName, () => {
         expect(test).toBe(true);
         done();
       });
@@ -59,8 +59,8 @@ describe('flushS3Bucket', () => {
     });
 
     it('removes the item', done => {
-      flushS3Bucket(s3, bucketName, error => {
-        s3.getObject({ Bucket: bucketName, Key: 'test' }, (err, data) => {
+      flushS3Bucket(s3, bucketName, () => {
+        s3.getObject({ Bucket: bucketName, Key: 'test' }, (_err, data) => {
           expect(data).toBe(null);
           done();
         });
@@ -102,8 +102,8 @@ describe('flushS3Bucket', () => {
     });
 
     it('does not leave any objects', done => {
-      flushS3Bucket(s3, bucketName, error => {
-        s3.listObjects({ Bucket: bucketName }, (err, data) => {
+      flushS3Bucket(s3, bucketName, () => {
+        s3.listObjects({ Bucket: bucketName }, (_err, data) => {
           expect(data.Contents).toEqual([]);
           done();
         });
@@ -111,8 +111,8 @@ describe('flushS3Bucket', () => {
     });
 
     it('does not leave any versions', done => {
-      flushS3Bucket(s3, bucketName, error => {
-        s3.listObjectVersions({ Bucket: bucketName }, (err, data) => {
+      flushS3Bucket(s3, bucketName, () => {
+        s3.listObjectVersions({ Bucket: bucketName }, (_err, data) => {
           expect(data.Versions).toEqual([]);
           done();
         });
@@ -120,8 +120,8 @@ describe('flushS3Bucket', () => {
     });
 
     it('does not leave any delete markers', done => {
-      flushS3Bucket(s3, bucketName, error => {
-        s3.listObjectVersions({ Bucket: bucketName }, (err, data) => {
+      flushS3Bucket(s3, bucketName, () => {
+        s3.listObjectVersions({ Bucket: bucketName }, (_err, data) => {
           expect(data.DeleteMarkers).toEqual([]);
           done();
         });
@@ -180,12 +180,12 @@ describe('flushS3Bucket', () => {
         series(
           [
             next =>
-              s3.listObjects({ Bucket: bucketName }, (err, data) => {
+              s3.listObjects({ Bucket: bucketName }, (_err, data) => {
                 expect(data.Contents).toEqual([]);
                 next();
               }),
             next =>
-              s3.listObjectVersions({ Bucket: bucketName }, (err, data) => {
+              s3.listObjectVersions({ Bucket: bucketName }, (_err, data) => {
                 expect(data.Versions).toEqual([]);
                 expect(data.DeleteMarkers).toEqual([]);
                 next();
