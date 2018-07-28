@@ -29,6 +29,7 @@ install:
   - yarn
 
 script:
+  - commitlint-travis
   - yarn run build
   - yarn run format:verify
   - yarn run lint
