@@ -4665,13 +4665,9 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-prettier@1.14.2:
+prettier@1.14.2, prettier@^1.14.2:
   version "1.14.2"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.14.2.tgz#0ac1c6e1a90baa22a62925f41963c841983282f9"
-
-prettier@^1.13.7:
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.14.0.tgz#847c235522035fd988100f1f43cf20a7d24f9372"
 
 pretty-format@^23.5.0:
   version "23.5.0"
@@ -5819,9 +5815,9 @@ trim-right@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
 
-ts-config@20.3.0:
-  version "20.3.0"
-  resolved "https://registry.yarnpkg.com/ts-config/-/ts-config-20.3.0.tgz#437de8b0059cd2bff4e32b702382e0e061686bbc"
+ts-config@20.4.0:
+  version "20.4.0"
+  resolved "https://registry.yarnpkg.com/ts-config/-/ts-config-20.4.0.tgz#1aff82bd68af4715c325867c38bca4f2a5597d39"
   dependencies:
     "@oclif/command" "^1.4.36"
     "@oclif/config" "^1.6.33"
@@ -5830,7 +5826,7 @@ ts-config@20.3.0:
     common-tags "^1.8.0"
     globby "^8.0.1"
     json-diff "^0.5.2"
-    prettier "^1.13.7"
+    prettier "^1.14.2"
     semver "^5.5.0"
 
 ts-jest@23.1.3:
