@@ -174,11 +174,20 @@
     debug "^3.1.0"
     semver "^5.5.0"
 
-"@oclif/config@^1.7.4":
-  version "1.7.4"
-  resolved "https://registry.yarnpkg.com/@oclif/config/-/config-1.7.4.tgz#5b7f779534a339de8c62a863b12f5740b15c41f5"
+"@oclif/command@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@oclif/command/-/command-1.5.1.tgz#dd2e1c1f8e55dad73036d4cab036ac3550ff8c24"
   dependencies:
-    debug "^3.1.0"
+    "@oclif/errors" "^1.2.0"
+    "@oclif/parser" "^3.6.1"
+    debug "^4.0.1"
+    semver "^5.5.1"
+
+"@oclif/config@^1.7.6":
+  version "1.7.6"
+  resolved "https://registry.yarnpkg.com/@oclif/config/-/config-1.7.6.tgz#849e5f79591c8dd29d99dd3aba0914b50e2c2e74"
+  dependencies:
+    debug "^4.0.1"
     tslib "^1.9.3"
 
 "@oclif/errors@^1.1.2":
@@ -201,11 +210,21 @@
     strip-ansi "^4.0.0"
     wrap-ansi "^3.0.1"
 
+"@oclif/errors@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@oclif/errors/-/errors-1.2.1.tgz#3d655bec6ce7eb7df2f3cd39c23eb62f0470b77d"
+  dependencies:
+    clean-stack "^1.3.0"
+    fs-extra "^7.0.0"
+    indent-string "^3.2.0"
+    strip-ansi "^4.0.0"
+    wrap-ansi "^4.0.0"
+
 "@oclif/linewrap@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@oclif/linewrap/-/linewrap-1.0.0.tgz#aedcb64b479d4db7be24196384897b5000901d91"
 
-"@oclif/parser@^3.6.0":
+"@oclif/parser@^3.6.0", "@oclif/parser@^3.6.1":
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/@oclif/parser/-/parser-3.6.1.tgz#dd0ad29d9178d75a2de30314874a6167675925ed"
   dependencies:
@@ -213,15 +232,16 @@
     chalk "^2.4.1"
     tslib "^1.9.3"
 
-"@oclif/plugin-help@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-help/-/plugin-help-2.1.1.tgz#5bce32a8a9795827e4f0c6f18c3ff30010130e18"
+"@oclif/plugin-help@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-help/-/plugin-help-2.1.2.tgz#b6639e95157f563225a29b4329ce62e2e162afe9"
   dependencies:
     "@oclif/command" "^1.5.0"
     chalk "^2.4.1"
     indent-string "^3.2.0"
     lodash.template "^4.4.0"
     string-width "^2.1.1"
+    strip-ansi "^4.0.0"
     widest-line "^2.0.0"
     wrap-ansi "^4.0.0"
 
@@ -1450,6 +1470,12 @@ debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.8, debug@^2.6.9:
 debug@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.0.0.tgz#ef7592a30b1c5e05a78e96926df2e6b36b5544e7"
+  dependencies:
+    ms "^2.1.1"
+
+debug@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.0.1.tgz#f9bb36d439b8d1f0dd52d8fb6b46e4ebb8c1cd5b"
   dependencies:
     ms "^2.1.1"
 
@@ -5847,14 +5873,14 @@ trim-right@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
 
-ts-config@20.5.0:
-  version "20.5.0"
-  resolved "https://registry.yarnpkg.com/ts-config/-/ts-config-20.5.0.tgz#308c15e732d4c42cc7a129edad2018b47228fc69"
+ts-config@20.6.0:
+  version "20.6.0"
+  resolved "https://registry.yarnpkg.com/ts-config/-/ts-config-20.6.0.tgz#86ed34cf3ac826a44fe16306aa41759382b3fe05"
   dependencies:
-    "@oclif/command" "^1.5.0"
-    "@oclif/config" "^1.7.4"
-    "@oclif/errors" "^1.2.0"
-    "@oclif/plugin-help" "^2.1.1"
+    "@oclif/command" "^1.5.1"
+    "@oclif/config" "^1.7.6"
+    "@oclif/errors" "^1.2.1"
+    "@oclif/plugin-help" "^2.1.2"
     common-tags "^1.8.0"
     globby "^8.0.1"
     json-diff "^0.5.2"
