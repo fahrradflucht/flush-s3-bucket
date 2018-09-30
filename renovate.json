@@ -3,7 +3,7 @@
   "prHourlyLimit": 0,
   "rebaseStalePrs": true,
   "devDependencies": {
-    "schedule": ["before 9am on sunday"],
+    "schedule": ["before 12am on sunday"],
     "automerge": true
   }
 }
