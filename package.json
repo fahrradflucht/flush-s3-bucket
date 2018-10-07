@@ -30,7 +30,7 @@
     "@types/node": "10.11.4",
     "babel-core": "6.26.3",
     "commitlint": "7.2.0",
-    "husky": "1.0.1",
+    "husky": "1.1.1",
     "jest": "23.6.0",
     "prettier": "1.14.3",
     "semantic-release": "15.9.16",
