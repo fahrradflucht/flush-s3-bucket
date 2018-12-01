@@ -1,4 +1,4 @@
-import { waterfall, whilst } from 'async';
+import { ErrorCallback, waterfall, whilst } from 'async';
 import { AWSError, S3 } from 'aws-sdk';
 import {
   ListObjectVersionsOutput,
@@ -33,7 +33,7 @@ function toObjectIdentifierList(
 export function flushS3Bucket(
   client: S3,
   bucketName: string,
-  callback: (error?: AWSError | Error) => void
+  callback: ErrorCallback<Error | AWSError>
 ): void {
   let moreVersionsToFetch = true;
 
