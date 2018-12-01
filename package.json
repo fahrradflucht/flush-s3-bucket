@@ -18,7 +18,6 @@
     "build": "tsc",
     "format": "prettier --write '**/*.{js,json,md,ts}'",
     "format:verify": "prettier --list-different '**/*.{js,json,md,ts}'",
-    "commitmsg": "commitlint -E GIT_PARAMS",
     "lint": "tslint --project .",
     "test": "jest"
   },
@@ -42,5 +41,10 @@
   "dependencies": {
     "async": "^2.6.0",
     "aws-sdk": "^2.218.1"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
