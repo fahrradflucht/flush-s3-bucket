@@ -26,7 +26,7 @@
     "@commitlint/travis-cli": "7.2.1",
     "@types/async": "2.0.50",
     "@types/jest": "23.3.10",
-    "@types/node": "10.12.12",
+    "@types/node": "10.12.15",
     "babel-core": "6.26.3",
     "commitlint": "7.2.1",
     "husky": "1.2.0",
