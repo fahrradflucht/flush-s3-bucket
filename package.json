@@ -24,7 +24,7 @@
   "devDependencies": {
     "@commitlint/config-conventional": "7.3.1",
     "@commitlint/travis-cli": "7.3.2",
-    "@types/async": "2.0.50",
+    "@types/async": "2.4.0",
     "@types/jest": "23.3.12",
     "@types/node": "10.12.18",
     "babel-core": "6.26.3",
