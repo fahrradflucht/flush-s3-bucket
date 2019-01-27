@@ -9,16 +9,16 @@ import {
 function toObjectIdentifierList(
   objectList: ObjectVersionList
 ): ObjectIdentifierList {
-  return objectList.reduce((
-    identifiers: ObjectIdentifierList,
-    { Key, VersionId }
-  ) => {
-    if (Key) {
-      identifiers.push({ Key, VersionId });
-    }
+  return objectList.reduce(
+    (identifiers: ObjectIdentifierList, { Key, VersionId }) => {
+      if (Key) {
+        identifiers.push({ Key, VersionId });
+      }
 
-    return identifiers;
-  }, []);
+      return identifiers;
+    },
+    []
+  );
 }
 
 /**
