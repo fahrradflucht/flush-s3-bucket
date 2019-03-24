@@ -36,7 +36,7 @@
     "ts-config": "20.9.0",
     "ts-jest": "24.0.0",
     "tslint": "5.14.0",
-    "typescript": "3.3.3333"
+    "typescript": "3.3.4000"
   },
   "dependencies": {
     "async": "^2.6.0",
