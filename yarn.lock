@@ -558,9 +558,9 @@
     into-stream "^4.0.0"
     lodash "^4.17.4"
 
-"@types/async@2.4.1":
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/@types/async/-/async-2.4.1.tgz#43c3b2c60eab41c25ca0009c07ca7d619d943119"
+"@types/async@2.4.2":
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/@types/async/-/async-2.4.2.tgz#9b33d5c9fcebff17139521753eaf992ed5ace8e4"
 
 "@types/babel__core@^7.1.0":
   version "7.1.0"
