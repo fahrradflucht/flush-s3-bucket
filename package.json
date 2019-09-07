@@ -30,7 +30,7 @@
     "babel-core": "6.26.3",
     "commitlint": "8.1.0",
     "husky": "2.4.1",
-    "jest": "24.8.0",
+    "jest": "24.9.0",
     "prettier": "1.18.2",
     "semantic-release": "15.13.16",
     "ts-config": "20.9.0",
