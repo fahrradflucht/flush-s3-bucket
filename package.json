@@ -31,7 +31,7 @@
     "commitlint": "8.2.0",
     "husky": "3.0.9",
     "jest": "24.9.0",
-    "prettier": "1.18.2",
+    "prettier": "1.19.1",
     "semantic-release": "15.13.30",
     "ts-config": "20.10.0",
     "ts-jest": "24.1.0",
