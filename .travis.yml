@@ -13,17 +13,24 @@ node_js:
 services:
   - docker
 
-env:
-  global:
-    # Default scality/s3server credentials
-    - AWS_ACCESS_KEY_ID=accessKey1 AWS_SECRET_ACCESS_KEY=verySecretKey1
-
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
 
+env:
+  global:
+    - AWS_ACCESS_KEY_ID=accessKey1 AWS_SECRET_ACCESS_KEY=verySecretKey1
+
 before_install:
-  - docker run -d --name s3server -p 8000:8000 scality/s3server:mem-latest
+  - >
+    docker run
+    -d
+    --name cloudserver
+    -p 8000:8000
+    -e S3BACKEND=mem
+    -e SCALITY_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID"
+    -e SCALITY_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
+    zenko/cloudserver
 
 install:
   - yarn
