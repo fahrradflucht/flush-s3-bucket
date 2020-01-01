@@ -585,10 +585,6 @@
     into-stream "^4.0.0"
     lodash "^4.17.4"
 
-"@types/async@3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@types/async/-/async-3.0.3.tgz#ea3694128c757580e4f9328cd941b81d9c3e9bf6"
-
 "@types/babel__core@^7.1.0":
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.0.tgz#710f2487dda4dcfd010ca6abb2b4dc7394365c51"
@@ -956,10 +952,6 @@ async-limiter@~1.0.0:
 async@^1.4.0:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
-
-async@^3.0.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/async/-/async-3.1.0.tgz#42b3b12ae1b74927b5217d8c0016baaf62463772"
 
 asynckit@^0.4.0:
   version "0.4.0"
