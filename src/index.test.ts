@@ -1,4 +1,3 @@
-import { series, timesLimit } from 'async';
 import { S3 } from 'aws-sdk';
 import { randomBytes } from 'crypto';
 import { flushS3Bucket } from '.';
@@ -10,6 +9,23 @@ const clientConfiguration = {
 
 const createBucketName = (extension: string) =>
   `awesome-test-bucket-${extension}`;
+
+const timesLimit = async (
+  count: number,
+  limit: number,
+  iteratee: (n: number) => Promise<unknown>
+): Promise<void> => {
+  let n = 0;
+
+  const startWorker = async () => {
+    while (n < count) {
+      n += 1;
+      await iteratee(n);
+    }
+  };
+
+  await Promise.all([...Array(limit)].map(() => startWorker()));
+};
 
 describe('flushS3Bucket', () => {
   let s3: S3;
@@ -69,29 +85,23 @@ describe('flushS3Bucket', () => {
   });
 
   describe('on a versioned bucket with an item', () => {
-    beforeEach(done => {
-      series(
-        [
-          cb =>
-            s3.putBucketVersioning(
-              {
-                Bucket: bucketName,
-                VersioningConfiguration: {
-                  Status: 'Enabled'
-                }
-              },
-              cb
-            ),
-          cb => s3.putObject({ Bucket: bucketName, Key: 'test' }, cb),
-          cb =>
-            s3.putObject(
-              { Bucket: bucketName, Key: 'test', Body: 'version2' },
-              cb
-            ),
-          cb => s3.deleteObject({ Bucket: bucketName, Key: 'test' }, cb)
-        ],
-        done
-      );
+    beforeEach(async () => {
+      await s3
+        .putBucketVersioning({
+          Bucket: bucketName,
+          VersioningConfiguration: {
+            Status: 'Enabled'
+          }
+        })
+        .promise();
+
+      await s3.putObject({ Bucket: bucketName, Key: 'test' }).promise();
+
+      await s3
+        .putObject({ Bucket: bucketName, Key: 'test', Body: 'version2' })
+        .promise();
+
+      await s3.deleteObject({ Bucket: bucketName, Key: 'test' }).promise();
     });
 
     it('calls the callback without an error', done => {
@@ -130,44 +140,22 @@ describe('flushS3Bucket', () => {
   });
 
   describe('on a versioned bucket with over 1000 items', () => {
-    beforeEach(done => {
-      series(
-        [
-          next =>
-            s3.putBucketVersioning(
-              {
-                Bucket: bucketName,
-                VersioningConfiguration: {
-                  Status: 'Enabled'
-                }
-              },
-              next
-            ),
-          next => {
-            timesLimit(
-              1100,
-              100,
-              (n: number, created: () => void) => {
-                s3.putObject({ Bucket: bucketName, Key: `item-${n}` }, created);
-              },
-              next
-            );
-          },
-          next => {
-            timesLimit(
-              502,
-              100,
-              (n: number, created: () => void) => {
-                s3.deleteObject(
-                  { Bucket: bucketName, Key: `item-${n}` },
-                  created
-                );
-              },
-              next
-            );
+    beforeEach(async () => {
+      await s3
+        .putBucketVersioning({
+          Bucket: bucketName,
+          VersioningConfiguration: {
+            Status: 'Enabled'
           }
-        ],
-        done
+        })
+        .promise();
+
+      await timesLimit(1100, 100, (n: number) =>
+        s3.putObject({ Bucket: bucketName, Key: `item-${n}` }).promise()
+      );
+
+      await timesLimit(502, 100, (n: number) =>
+        s3.deleteObject({ Bucket: bucketName, Key: `item-${n}` }).promise()
       );
     }, 15000);
 
@@ -177,22 +165,24 @@ describe('flushS3Bucket', () => {
     it('works', done => {
       flushS3Bucket(s3, bucketName, error => {
         expect(error).toBeFalsy();
-        series(
-          [
-            next =>
-              s3.listObjects({ Bucket: bucketName }, (_err, data) => {
-                expect(data.Contents).toEqual([]);
-                next();
-              }),
-            next =>
-              s3.listObjectVersions({ Bucket: bucketName }, (_err, data) => {
-                expect(data.Versions).toEqual([]);
-                expect(data.DeleteMarkers).toEqual([]);
-                next();
-              })
-          ],
-          done
-        );
+
+        Promise.all([
+          (async () => {
+            const data = await s3.listObjects({ Bucket: bucketName }).promise();
+
+            expect(data.Contents).toEqual([]);
+          })(),
+          (async () => {
+            const data = await s3
+              .listObjectVersions({ Bucket: bucketName })
+              .promise();
+
+            expect(data.Versions).toEqual([]);
+            expect(data.DeleteMarkers).toEqual([]);
+          })()
+        ])
+          .then(() => done())
+          .catch(done.fail);
       });
     });
   });
