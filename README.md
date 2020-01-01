@@ -62,10 +62,10 @@ integration level and need a S3 endpoint which is configurable through the
 `S3_ENDPOINT` environment variable.
 
 The tests are known to run successfully against
-[`scality/s3server`](https://hub.docker.com/r/scality/s3server/) and
+[`zenko/cloudserver`](https://hub.docker.com/r/zenko/cloudserver/) and
 obviously real AWS S3 (which nonetheless is not recommended due to cost and
 speed) while they are known to fail against
-[`localstack/localstack`](https://hub.docker.com/r/scality/s3server/) because
+[`localstack/localstack`](https://hub.docker.com/r/localstack/localstack/) because
 of bugs in its versioning implementation (though the library should still
 work on unversioned localstack buckets).
 
