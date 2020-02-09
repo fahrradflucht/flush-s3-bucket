@@ -33,7 +33,7 @@
     "prettier": "1.19.1",
     "semantic-release": "15.14.0",
     "ts-config": "20.10.0",
-    "ts-jest": "25.1.0",
+    "ts-jest": "25.2.0",
     "tslint": "5.20.1",
     "typescript": "3.7.5"
   },
